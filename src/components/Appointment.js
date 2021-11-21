@@ -18,7 +18,7 @@ const Appointment = ({
 				</button>
 			)}
 			{confirmed && <strong className='confirmed'>Confirmed!</strong>}
-		</span>
+		</span>		
 	</div>
 );
 
