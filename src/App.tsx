@@ -1,5 +1,5 @@
 import './App.css';
-import AppointmentList from './components/AppointmentList';
+import AppointmentList from './components/appointment_list';
 
 function App() {
 	return (

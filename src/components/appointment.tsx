@@ -1,10 +1,10 @@
-interface AppointmentProps {
+export interface AppointmentProps {
 	id: number;
 	date: string;
 	person: string;
 	description: string;
-	confirmed: boolean;
-	onMarkConfirmed: Function;
+	confirmed?: boolean;
+	onMarkConfirmed?: Function;
 }
 
 const Appointment: React.FC<AppointmentProps> = ({
@@ -21,7 +21,7 @@ const Appointment: React.FC<AppointmentProps> = ({
 		<span className='apptPerson'>{person}</span>
 		<span className='apptDesc'>{description}</span>
 		<span className='apptConfirmation'>
-			{!confirmed && (
+			{!confirmed && onMarkConfirmed && (
 				<button onClick={() => onMarkConfirmed(id)}>
 					Mark confirmed
 				</button>

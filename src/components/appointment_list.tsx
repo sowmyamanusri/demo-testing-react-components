@@ -1,4 +1,4 @@
-import Appointment from './Appointment';
+import Appointment from './appointment';
 import { useState } from 'react';
 
 interface AppointmentInfo {
