@@ -1,4 +1,13 @@
-const Appointment = ({
+interface AppointmentProps {
+	id: number;
+	date: string;
+	person: string;
+	description: string;
+	confirmed: boolean;
+	onMarkConfirmed: Function;
+}
+
+const Appointment: React.FC<AppointmentProps> = ({
 	id,
 	description,
 	person,
@@ -18,7 +27,7 @@ const Appointment = ({
 				</button>
 			)}
 			{confirmed && <strong className='confirmed'>Confirmed!</strong>}
-		</span>		
+		</span>
 	</div>
 );
 

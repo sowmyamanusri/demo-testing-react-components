@@ -1,7 +1,15 @@
 import Appointment from './Appointment';
 import { useState } from 'react';
 
-const initial_appointments = [
+interface AppointmentInfo {
+	id: number;
+	person: string;
+	date: string;
+	description: string;
+	confirmed: boolean;
+}
+
+const initial_appointments: Array<AppointmentInfo> = [
 	{
 		id: 1,
 		person: 'Terence',
@@ -19,11 +27,15 @@ const initial_appointments = [
 ];
 
 const AppointmentList = () => {
-	const [appointments, setAppointments] = useState(initial_appointments);
+	const [appointments, setAppointments] =
+		useState<Array<AppointmentInfo>>(initial_appointments);
 
-	const confirmAppt = (id) => {
+	const confirmAppt = (id: number) => {
 		const appts = [...appointments];
-		appts.find((a) => a.id === id).confirmed = true;
+		const appt = appts.find((a) => a.id === id);
+		if (appt) {
+			appt.confirmed = true;
+		}
 		setAppointments(appts);
 	};
 
@@ -32,7 +44,7 @@ const AppointmentList = () => {
 			<h2>Appointments</h2>
 			{appointments && (
 				<section className='appointmentList'>
-					{appointments.map((a) => (
+					{appointments.map((a: AppointmentInfo) => (
 						<Appointment
 							key={a.id}
 							id={a.id}
@@ -40,7 +52,7 @@ const AppointmentList = () => {
 							date={a.date}
 							person={a.person}
 							confirmed={a.confirmed}
-							onMarkConfirmed={(id) => confirmAppt(id)}
+							onMarkConfirmed={(id: number) => confirmAppt(id)}
 						/>
 					))}
 				</section>
