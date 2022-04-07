@@ -4,7 +4,7 @@ export interface AppointmentProps {
 	person: string;
 	description: string;
 	confirmed?: boolean;
-	onMarkConfirmed?: Function;
+	onMarkConfirmed?: (id: number) => void;
 }
 
 const Appointment: React.FC<AppointmentProps> = ({
